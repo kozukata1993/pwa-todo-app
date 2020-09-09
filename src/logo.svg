@@ -1,5 +1,6 @@
 <svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 1000 1000'>
-    <polygon points='500 30, 92.98000000000002 735, 907.02 735' stroke-width='20' stroke-linejoin='round' stroke='#000000' fill='none' />
-    <polygon points='500 265, 296.49 617.5, 703.51 617.5' stroke-width='20' stroke-linejoin='round' stroke='#000000' fill='none' />
-    <circle cx='500' cy='500' r='235' stroke-width='20' stroke='#000000' fill='none' />
+	<polygon points='500 30, 92.98000000000002 735, 907.02 735' stroke-width='25' stroke-linejoin='round' stroke='#ffffff' fill='white' />
+	<polygon points='500 70, 127.62 715, 872.38 715' stroke-width='25' stroke-linejoin='round' stroke='#000000' fill='none' />
+	<polygon points='500 285, 313.81 607.5, 686.19 607.5' stroke-width='25' stroke-linejoin='round' stroke='#000000' fill='none' />
+	<circle cx='500' cy='500' r='215' stroke-width='25' stroke='#000000' fill='none' />
 </svg>
