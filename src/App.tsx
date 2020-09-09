@@ -5,7 +5,7 @@ const App: React.FC = () => {
   return (
     <>
       <Container>
-        <Typography variant="h2">Hello World</Typography>
+        <Typography variant="h2">Hello Firebase</Typography>
       </Container>
     </>
   );
