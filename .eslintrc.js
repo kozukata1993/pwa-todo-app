@@ -42,6 +42,8 @@ module.exports = {
       },
     ],
 
+    'react/prop-types': 'off',
+
     // for prettier
     'prettier/prettier': [
       'error',
