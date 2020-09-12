@@ -7,7 +7,7 @@ const App: React.FC = () => {
     <>
       <Layout>
         <Container>
-          <Header>Hello Semantic UI</Header>
+          <Header>It`&#39;`s a PWA!</Header>
         </Container>
       </Layout>
     </>
