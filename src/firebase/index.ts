@@ -5,6 +5,7 @@ import 'firebase/firebase-storage';
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: 'todo-app-4850f.firebaseapp.com',
   projectId: 'todo-app-4850f',
   appID: process.env.REACT_APP_FIREBASE_APP_ID,
 };

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Dropdown, Image, Menu, Segment } from 'semantic-ui-react';
+import { Container, Image, Menu, Segment } from 'semantic-ui-react';
+import { LoginForm } from '../../components/loginForm/loginForm';
+import { useAuth } from '../../customHooks/useAuth';
 import logo from '../../logo.svg';
 
 interface Props {
@@ -7,38 +9,38 @@ interface Props {
 }
 
 export const Layout: React.FC<Props> = ({ children }) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const { isAuthenticated, loading, currentUser, logout } = useAuth();
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  console.log('isAuthenticated: ', isAuthenticated);
+  console.log('currentUser: ', currentUser);
+
   return (
     <>
-      <Menu fixed="top" inverted>
+      <Menu fixed="top" inverted borderless>
         <Container>
           <Menu.Item as="a" header>
             <Image size="mini" src={logo} style={{ marginRight: '1.5em' }} />
-            Project Name
+            Todo App
           </Menu.Item>
           <Menu.Item as="a">Home</Menu.Item>
 
-          <Dropdown as={Menu.Item} position="right" item simple text="Dropdown">
-            <Dropdown.Menu>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Header>Header Item</Dropdown.Header>
-              <Dropdown.Item>
-                <i className="dropdown icon" />
-                <span className="text">Submenu</span>
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Menu.Item as="a" position="right" onClick={isAuthenticated ? logout : openModal}>
+            {isAuthenticated ? 'Log out' : 'Log in'}
+          </Menu.Item>
         </Container>
       </Menu>
-      <Segment basic style={{ paddingTop: '6rem' }}>
+      <Segment basic style={{ paddingTop: '6rem' }} vertical loading={loading}>
         {children}
       </Segment>
+      <LoginForm isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
     </>
   );
 };
