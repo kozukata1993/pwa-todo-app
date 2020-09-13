@@ -1,8 +1,32 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
+
+    function isAnyAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isUserAuthenticated(userID) {
+      return isAnyAuthenticated() && request.auth.uid == userID
+    }
+
+    match /users/{userID} {
+      allow read, write: if isUserAuthenticated(userID);
+    }
+
+    match /users/{userID}/todos/{todoID} {
+      allow read: if isUserAuthenticated(userID);
+
+      allow create: if isUserAuthenticated(userID)
+        && 'title' in request.resource.data
+        && request.resource.data.title.size() < 30
+        && request.resource.data.createdAt == request.time
+
+      allow update: if isUserAuthenticated(userID)
+        && 'title' in request.resource.data
+        && request.resource.data.title.size() < 30
+
+      allow delete: if isUserAuthenticated(userID)
     }
   }
 }
