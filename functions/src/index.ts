@@ -9,3 +9,5 @@ export const helloWorld = functions
     functions.logger.info('Hello logs!', { structuredData: true });
     response.send('Hello from Firebase!');
   });
+
+export { onCreateUser, onDeleteUser } from './auth';
